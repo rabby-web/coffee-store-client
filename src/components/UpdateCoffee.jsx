@@ -3,7 +3,8 @@ import swal from "sweetalert";
 
 const UpdateCoffee = () => {
   const coffee = useLoaderData();
-  const { name, quantity, supplier, taste, details, category, photo } = coffee;
+  const { _id, name, quantity, supplier, taste, details, category, photo } =
+    coffee;
   const updateCoffee = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -14,7 +15,7 @@ const UpdateCoffee = () => {
     const details = form.details.value;
     const category = form.category.value;
     const photo = form.photo.value;
-    const newCoffee = {
+    const updateCoffee = {
       name,
       quantity,
       supplier,
@@ -23,22 +24,22 @@ const UpdateCoffee = () => {
       category,
       photo,
     };
-    console.log(newCoffee);
+    console.log(updateCoffee);
 
-    fetch("http://localhost:5000/coffee", {
-      method: "POST",
+    fetch(`http://localhost:5000/coffee/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newCoffee),
+      body: JSON.stringify(updateCoffee),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
+        if (data.modifiedCount > 0) {
           swal({
-            title: "Successfully Added Coffee!",
-            text: "Successfully Added Coffee to MongoDB!",
+            title: "Coffee Updated!",
+            text: "Successfully Update Coffee!",
             icon: "success",
           });
         }
