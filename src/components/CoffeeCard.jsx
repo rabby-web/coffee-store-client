@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const CoffeeCard = ({ coffee }) => {
@@ -57,7 +58,9 @@ const CoffeeCard = ({ coffee }) => {
           <div className="card-actions justify-end">
             <div className=" flex flex-col gap-3">
               <button className="btn btn-outline">View</button>
-              <button className="btn btn-outline">Update</button>
+              <Link to={`/updateCoffee/${_id}`}>
+                <button className="btn btn-outline">Update</button>
+              </Link>
               <button
                 onClick={() => handelDelete(_id)}
                 className="btn btn-error btn-outline"
