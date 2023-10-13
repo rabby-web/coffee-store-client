@@ -1,6 +1,34 @@
+import Swal from "sweetalert2";
+
 const CoffeeCard = ({ coffee }) => {
-  const { name, quantity, supplier, taste, details, category, photo } =
+  const { _id, name, quantity, supplier, taste, details, category, photo } =
     coffee || {};
+
+  const handelDelete = (_id) => {
+    console.log(_id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/coffee/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          });
+      }
+    });
+  };
   return (
     <div>
       <div className="card card-side justify-center items-center shadow-xl m-4 gap-5 bg-[#ECEAE3]">
@@ -30,7 +58,12 @@ const CoffeeCard = ({ coffee }) => {
             <div className=" flex flex-col gap-3">
               <button className="btn btn-outline">View</button>
               <button className="btn btn-outline">Update</button>
-              <button className="btn btn-error btn-outline">Delete</button>
+              <button
+                onClick={() => handelDelete(_id)}
+                className="btn btn-error btn-outline"
+              >
+                Delete
+              </button>
             </div>
           </div>
         </div>
