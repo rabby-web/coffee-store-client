@@ -9,7 +9,7 @@ const AddCoffee = () => {
     const details = form.details.value;
     const category = form.category.value;
     const photo = form.photo.value;
-    const coffee = {
+    const newCoffee = {
       name,
       quantity,
       supplier,
@@ -18,7 +18,19 @@ const AddCoffee = () => {
       category,
       photo,
     };
-    console.log(coffee);
+    console.log(newCoffee);
+
+    fetch("http://localhost:5000/coffee", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newCoffee),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.lgo(data);
+      });
   };
   return (
     <div className="bg-[#F4F3F0] rounded-md p-20">
