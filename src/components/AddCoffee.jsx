@@ -1,3 +1,5 @@
+import swal from "sweetalert";
+
 const AddCoffee = () => {
   const handleCoffee = (event) => {
     event.preventDefault();
@@ -29,7 +31,14 @@ const AddCoffee = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.lgo(data);
+        console.log(data);
+        if (data.insertedId) {
+          swal({
+            title: "Successfully Added Coffee!",
+            text: "Successfully Added Coffee to MongoDB!",
+            icon: "success",
+          });
+        }
       });
   };
   return (
