@@ -56,7 +56,7 @@ const AddCoffee = () => {
             <label className="label">
               <span className="label-text text-lg text-black">Name</span>
             </label>
-            <label className="input-group">
+            <label className="">
               <input
                 type="text"
                 name="name"
@@ -71,7 +71,7 @@ const AddCoffee = () => {
                 Available Quantity
               </span>
             </label>
-            <label className="input-group ">
+            <label className="">
               <input
                 type="text"
                 name="quantity"
@@ -87,7 +87,7 @@ const AddCoffee = () => {
             <label className="label">
               <span className="label-text text-lg text-black">Supplier</span>
             </label>
-            <label className="input-group">
+            <label className="">
               <input
                 type="text"
                 name="supplier"
@@ -100,7 +100,7 @@ const AddCoffee = () => {
             <label className="label ">
               <span className="label-text text-lg text-black">Taste</span>
             </label>
-            <label className="input-group ">
+            <label className="">
               <input
                 type="text"
                 name="taste"
@@ -116,7 +116,7 @@ const AddCoffee = () => {
             <label className="label">
               <span className="label-text text-lg text-black">Category</span>
             </label>
-            <label className="input-group">
+            <label className="">
               <input
                 type="text"
                 name="category"
@@ -129,7 +129,7 @@ const AddCoffee = () => {
             <label className="label ">
               <span className="label-text text-lg text-black">Details</span>
             </label>
-            <label className="input-group ">
+            <label className="">
               <input
                 type="text"
                 name="details"
@@ -145,7 +145,7 @@ const AddCoffee = () => {
             <label className="label">
               <span className="label-text text-lg text-black">Photo</span>
             </label>
-            <label className="input-group">
+            <label className="">
               <input
                 type="text"
                 name="photo"
