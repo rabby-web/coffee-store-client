@@ -1,10 +1,37 @@
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
+
 const SignIn = () => {
+  const { signInUser } = useContext(AuthContext);
   const handleSignIn = (e) => {
     e.preventDefault();
     const from = e.target;
     const email = from.email.value;
     const password = from.password.value;
     console.log(password, email);
+    signInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        const user = {
+          email,
+          lastLoggedAt: result?.user?.metadata?.lastSignInTime,
+        };
+        // update last logged at in the database
+        fetch("http://localhost:5000/user", {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div>
