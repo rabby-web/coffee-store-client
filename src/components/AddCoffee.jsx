@@ -22,13 +22,16 @@ const AddCoffee = () => {
     };
     console.log(newCoffee);
 
-    fetch("http://localhost:5000/coffee", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newCoffee),
-    })
+    fetch(
+      "https://coffee-store-server-69gxgpo3p-rabby-webs-projects.vercel.app/coffee",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newCoffee),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
